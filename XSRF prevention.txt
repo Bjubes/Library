@@ -1,0 +1,27 @@
+in form
+
+<form>
+<?php $token = md5(uniqid(mt_rand(), true))?>
+<input type="hidden" name="token" value="<?php echo $token; ?>">
+<?php
+$date_of_expiry = time() + 60 ;
+setcookie( "token", $token , $date_of_expiry );
+?>
+
+check in backend php
+
+if(isset($_COOKIE['token']) AND $_COOKIE['token'] == $_POST['token'])
+{
+	//continue check
+}
+else
+{
+	echo 'XSRF or cookies are disabled';
+}
+
+
+
+
+to create a salt
+
+$salt = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);

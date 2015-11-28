@@ -1,0 +1,82 @@
+<?php session_start();?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link   href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+    		<div class="row">
+               
+                <h3>Library</h3>
+                
+                 <?php //error and info messages
+                    if (!empty($_SESSION['errorMessage'])) {
+                        $errorMsg = $_SESSION['errorMessage'];
+                        ?>
+                          <div class="alert alert-danger">
+                            <?php echo $errorMsg . '</div>'; } 
+                    
+                    if (!empty($_SESSION['infoMessage'])) { 
+                        $infoMsg = $_SESSION['infoMessage'];
+                         ?>
+                          <div class="alert alert-success">
+                            <?php echo $infoMsg . '</div>'; }
+                ?>    			
+                              
+    		</div>
+			<div class="row">
+				<p>
+					<a href="create.php" class="btn btn-success">Add a book</a>
+				</p>
+				
+				<table class="table table-striped table-bordered">
+		              <thead>
+		                <tr>
+                            <th>Copies</th>
+		                  <th>Title</th>
+		                  <th>Author</th>
+		                  <th>ISBN</th>
+                          <th>Dewey Decimal</th>
+		                  <th>Info</th>
+		                  <th>Actions</th>
+		                </tr>
+		              </thead>
+		              <tbody>
+		              <?php 
+					   include 'database.php';
+					   $pdo = Database::connect();
+					   $sql = 'SELECT * FROM books ORDER BY author';
+	 				   foreach ($pdo->query($sql) as $row) {
+						   		echo '<tr>';
+							   	echo '<td>'. $row['amount'] . '</td>';
+							   	echo '<td>'. $row['title'] . '</td>';
+							   	echo '<td>'. $row['author'] . '</td>';
+							   	echo '<td>'. $row['isbn'] . '</td>';
+                           		echo '<td>'. $row['dewey_decimal'] . '</td>';
+							   	echo '<td>'. $row['edition_info'] . '</td>';
+							   	echo '<td width=250>';
+							   	echo '<a class="btn" href="read.php?id='.$row['id'].'">Details</a>';
+							   	echo '&nbsp;';
+							   	echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Modify</a>';
+							   	echo '&nbsp;';
+							   	echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+							   	echo '</td>';
+							   	echo '</tr>';
+					   }
+					   Database::disconnect();
+					  ?>
+				      </tbody>
+	            </table>
+    	</div>
+    </div> <!-- /container -->
+  </body>
+    <?php
+        //null out error and info messages
+        $_SESSION['infoMessage'] = NULL;
+        $_SESSION['errorMessage'] = NULL;
+    ?>
+</html>
