@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link   href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/sorttable.js"></script>
 </head>
 
 <body>
@@ -35,7 +36,7 @@
 
 				</p>
 				
-				<table class="table table-striped table-bordered">
+				<table class="sortable table table-striped table-bordered">
 		              <thead>
 		                <tr>
                             <th>Copies</th>
@@ -43,8 +44,8 @@
 		                  <th>Author</th>
 		                  <th>ISBN</th>
                           <th>Dewey Decimal</th>
-		                  <th>Info</th>
-		                  <th>Actions</th>
+		                  <th class="sorttable_nosort">Info</th>
+		                  <th class="sorttable_nosort">Actions</th>
 		                </tr>
 		              </thead>
 		              <tbody>
