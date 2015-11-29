@@ -30,7 +30,9 @@
     		</div>
 			<div class="row">
 				<p>
-					<a href="create.php" class="btn btn-success">Add a book</a>
+					<a href="create.php" class="btn btn-success">Add book using ISBN</a>
+					<a href="create-manual.php" class="btn btn-info">Add book manually</a>
+
 				</p>
 				
 				<table class="table table-striped table-bordered">

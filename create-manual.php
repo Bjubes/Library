@@ -2,14 +2,6 @@
 	session_start();
 	require 'database.php';
 
-	$id = null;
-	if ( !empty($_GET['id'])) {
-		$id = $_REQUEST['id'];
-	}
-	
-	if ( null==$id ) {
-		header("Location: index.php");
-	}
 	
 	if ( !empty($_POST)) {
 		// keep track validation errors
@@ -17,7 +9,7 @@
 		$emailError = null;
 		$mobileError = null;
 		
-		// keep track post values
+        // keep track post values
 		$title = $_POST['title'];
 		$author = $_POST['author'];
 		$isbn = $_POST['isbn'];
@@ -25,7 +17,8 @@
 		$summary = $_POST['summary'];
         $info = $_POST['info'];
 		$amt = intval($_POST['amt']);
-		
+        
+        
 		// validate input
 		$valid = true;
 		if (empty($author)) {
@@ -47,32 +40,14 @@
 		if ($valid) {
 			$pdo = Database::connect();
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$sql = "UPDATE books  set isbn = ?, author = ?, title = ?, dewey_decimal = ?, edition_info = ?, summary = ?, amount =? WHERE id = ?";
+			$sql = "INSERT INTO books(`isbn`, `author`, `title`, `dewey_decimal`, `edition_info`, `summary`, `amount`) VALUES (?,?,?,?,?,?,?);"; 
 			$q = $pdo->prepare($sql);
-			$q->execute(array($isbn,$author,$title,$dewey,$info,$summary,$amt,$id));
+			$q->execute(array($isbn,$author,$title,$dewey,$info,$summary,$amt));
 			Database::disconnect();
-            $_SESSION['infoMessage'] = $title . ' updated.';
+            $_SESSION['infoMessage'] = 'added "' . $title . '" to the library.';
 
 			header("Location: index.php");
 		}
-	} else {
-		$pdo = Database::connect();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "SELECT * FROM books where id = ?";
-		$q = $pdo->prepare($sql);
-		$q->execute(array($id));
-		$data = $q->fetch(PDO::FETCH_ASSOC);
-        //old detials to modify
-        $title = $data['title'];
-		$author = $data['author'];
-		$isbn = $data['isbn'];
-        $dewey = $data['dewey_decimal'];
-        $info = $data['edition_info'];
-		$summary = $data['summary'];
-		$amt = $data['amount'];
-		
-		
-		Database::disconnect();
 	}
 ?>
 
@@ -90,10 +65,10 @@
     
     			<div class="span10 offset1">
     				<div class="row">
-                        <h3>Modify Book Details</h3>
+                        <h3>Add a New Book</h3>
 		    		</div>
     		
-	    			<form id="updateForm"class="form-horizontal" action="update.php?id=<?php echo $id?>" method="post">
+	    			<form id="createForm"class="form-horizontal" action="create-manual.php" method="post">
                     <div class="control-group <?php echo !empty($amt)?'error':'';?>">
 					    <label class="control-label">Copies</label>
 					    <div class="controls">
@@ -142,13 +117,12 @@
                         <div class="control-group <?php echo !empty($summary)?'error':'';?>">
 					    <label class="control-label">Summary</label>
 					    <div class="controls">
-                            <textarea name="summary" form="updateForm"  placeholder="A brief summary of the book. No Spoilers!" ><?php if(!empty($summary)) { echo $summary;}?></textarea>
+                            <textarea name="summary" form="createForm"  placeholder="A brief summary of the book. No Spoilers!" ><?php if(!empty($summary)) { echo $summary;}?></textarea>
 					    </div>
 					  </div>
 					  <div class="form-actions">
   						  <a class="btn" href="index.php">Back</a>
-						  <button type="submit" class="btn btn-success">Update</button>
-                          <a href="reset.php?isbn=<?php echo '-' . $isbn .'&amt=' . $amt ?>" class="pull-right btn btn-warning">Reset using ISBN</a>
+						  <button type="submit" class="btn btn-success">Create</button>
                           <?php //the dash is in the line above so the isbn is treated as a string and not a number, losing its preceeding zeros ?>
 						</div>
 					</form>
