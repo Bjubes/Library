@@ -6,6 +6,7 @@
     <link   href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/sorttable.js"></script>
+   
 </head>
 
 <body>
@@ -33,10 +34,13 @@
 				<p>
 					<a href="create.php" class="btn btn-success">Add book using ISBN</a>
 					<a href="create-manual.php" class="btn btn-info">Add book manually</a>
-
+                    <input class="pull-right" type="text" id="search" placeholder="Type to search">
 				</p>
+                
+               
+
 				
-				<table class="sortable table table-striped table-bordered">
+				<table id="table" class="sortable table table-striped table-bordered">
 		              <thead>
 		                <tr>
                             <th>Copies</th>
@@ -54,13 +58,13 @@
 					   $pdo = Database::connect();
 					   $sql = 'SELECT * FROM books ORDER BY author';
 	 				   foreach ($pdo->query($sql) as $row) {
-						   		echo '<tr>';
-							   	echo '<td>'. $row['amount'] . '</td>';
-							   	echo '<td>'. $row['title'] . '</td>';
-							   	echo '<td>'. $row['author'] . '</td>';
-							   	echo '<td>'. $row['isbn'] . '</td>';
-                           		echo '<td>'. $row['dewey_decimal'] . '</td>';
-							   	echo '<td>'. $row['edition_info'] . '</td>';
+						   		echo '<tr> ';
+							   	echo '<td> '. $row['amount'] . '</td>';
+							   	echo '<td> '. $row['title'] . '</td>';
+							   	echo '<td> '. $row['author'] . '</td>';
+							   	echo '<td> '. $row['isbn'] . '</td>';
+                           		echo '<td> '. $row['dewey_decimal'] . '</td>';
+							   	echo '<td> '. $row['edition_info'] . '</td>';
 							   	echo '<td width=250>';
 							   	echo '<a class="btn" href="read.php?id='.$row['id'].'">Details</a>';
 							   	echo '&nbsp;';
@@ -76,6 +80,8 @@
 	            </table>
     	</div>
     </div> <!-- /container -->
+                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/search-table.js"></script>
   </body>
     <?php
         //null out error and info messages
