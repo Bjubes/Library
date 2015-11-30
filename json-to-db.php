@@ -1,7 +1,7 @@
 <?php
-    $APIkey = 'ANRI2C56';
+    define('APIkey','ANRI2C56',true);
 
-    $json_string = file_get_contents('http://isbndb.com/api/v2/json/'. $APIkey .'/book/' . $isbn);
+    $json_string = file_get_contents('http://isbndb.com/api/v2/json/'. APIkey .'/book/' . $isbn);
 
     $array = json_decode($json_string, true);
     $title = $array['data'][0]['title'];

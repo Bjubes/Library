@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link   href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/sorttable.js"></script>
    
@@ -31,10 +32,10 @@
                               
     		</div>
 			<div class="row">
-				<p>
+				<p class="form-inline">
 					<a href="create.php" class="btn btn-success">Add book using ISBN</a>
 					<a href="create-manual.php" class="btn btn-info">Add book manually</a>
-                    <input class="pull-right" type="text" id="search" placeholder="Type to search">
+                    <input class="form-control pull-right" type="text" id="search" placeholder="Type to search">
 				</p>
                 
                

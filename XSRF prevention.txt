@@ -2,7 +2,7 @@ in form
 
 <form>
 <?php $token = md5(uniqid(mt_rand(), true))?>
-<input type="hidden" name="token" value="<?php echo $token; ?>">
+<input class="form-control" type="hidden" name="token" value="<?php echo $token; ?>">
 <?php
 $date_of_expiry = time() + 60 ;
 setcookie( "token", $token , $date_of_expiry );

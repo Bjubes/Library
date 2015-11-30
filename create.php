@@ -41,6 +41,7 @@
 <head>
     <meta charset="utf-8">
     <link   href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
   
 </head>
@@ -54,10 +55,10 @@
 		    		</div>
     		
 	    			<form class="form-horizontal" action="create.php" method="post">
-					  <div class="control-group <?php echo !empty($isbnError)?'error':'';?>">
+					  <div class="form-group <?php echo !empty($isbnError)?'error':'';?>">
 					    <label class="control-label">ISBN</label>
 					    <div class="controls">
-					      	<input name="isbn" type="text"  placeholder="ISBN" value="<?php echo !empty($isbn)?$isbn:'';?>">
+					      	<input class="form-control" name="isbn" type="text"  placeholder="ISBN" value="<?php echo !empty($isbn)?$isbn:'';?>">
 					      	<?php if (!empty($isbnError)): ?>
 					      		<span class="help-inline"><?php echo $isbnError;?></span>
 					      	<?php endif; ?>
@@ -65,11 +66,11 @@
 
 					    </div>
 					  </div>
-                        
-                         <div class="control-group <?php echo !empty($emailError)?'error':'';?>">
+                            <i class="icon-plus-sign"></i>
+                         <div class="form-group <?php echo !empty($emailError)?'error':'';?>">
 					    <label class="control-label">Copies</label>
 					    <div class="controls">
-					      	<input name="amt" type="number"  placeholder="1" value="<?php echo !empty($amt)?$amt:'1';?>">
+					      	<input class="form-control" name="amt" type="number"  placeholder="1" value="<?php echo !empty($amt)?$amt:'1';?>">
 					      	<?php if (!empty($emailError)): ?>
 					      		<span class="help-inline"><?php echo $emailError;?></span>
 					      	<?php endif;?>
@@ -78,7 +79,7 @@
                         
 					  <div class="form-actions">
 						  <button type="submit" class="btn btn-success">Create</button>
-						  <a class="btn" href="index.php">Back</a>
+						  <a class="btn btn-custom" href="index.php">Back</a>
 						</div>
 					</form>
 				</div>

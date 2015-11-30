@@ -39,7 +39,7 @@
                     <p>There are <?php echo $data['amount'];?> copies on file.</p>
                     <?php } ?>
 	    			<div class="form-horizontal" >
-					  <div class="control-group">
+					  <div class="form-group">
 					    <label class="control-label">Title</label>
 					    <div class="controls">
 						    <label class="checkbox">
@@ -47,7 +47,7 @@
 						    </label>
 					    </div>
 					  </div>
-					  <div class="control-group">
+					  <div class="form-group">
 					    <label class="control-label">Author</label>
 					    <div class="controls">
 					      	<label class="checkbox">
@@ -55,7 +55,7 @@
 						    </label>
 					    </div>
 					  </div>
-					  <div class="control-group">
+					  <div class="form-group">
 					    <label class="control-label">ISBN</label>
 					    <div class="controls">
 					      	<label class="checkbox">
@@ -63,7 +63,7 @@
 						    </label>
 					    </div>
 					  </div>
-                        <div class="control-group">
+                        <div class="form-group">
 					    <label class="control-label">Dewey Decimal</label>
 					    <div class="controls">
 						    <label class="checkbox">
@@ -71,7 +71,7 @@
 						    </label>
 					    </div>
 					  </div>
-					  <div class="control-group">
+					  <div class="form-group">
 					    <label class="control-label">Edition Information</label>
 					    <div class="controls">
 					      	<label class="checkbox">
@@ -79,7 +79,7 @@
 						    </label>
 					    </div>
 					  </div>
-					  <div class="control-group">
+					  <div class="form-group">
 					    <label class="control-label">Summary</label>
 					    <div class="controls">
 					      	<label class="checkbox">
