@@ -11,12 +11,8 @@
     $summary = $array['data'][0]['summary'];
 
 
-    $pdo = Database::connect();
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $sql = "INSERT INTO `library`.`books` (`isbn`, `author`, `title`, `dewey_decimal`, `edition_info`, `summary`, `amount`) VALUES (?,?,?,?,?,?,?);";            
-
-    $q = $pdo->prepare($sql);
-    $q->execute(array($isbn,$author,$title,$dewey,$info,$summary,$amt));
-    Database::disconnect();
+    require 'add-to-database.php';
 ?>
+
+
+

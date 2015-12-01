@@ -29,8 +29,6 @@
 		// insert data
 		if ($valid) {
            require 'json-to-db.php';
-            $_SESSION['infoMessage'] = 'added "' . $title . '" to the library.';
-			header("Location: index.php");
 		}
 	}
 ?>
