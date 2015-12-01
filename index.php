@@ -36,6 +36,7 @@
 					<a href="create.php" class="btn btn-success">Add book using ISBN</a>
 					<a href="create-manual.php" class="btn btn-info">Add book manually</a>
                     <input class="form-control pull-right" type="text" id="search" placeholder="Type to search" value="<?php echo !empty($_GET['q'])?$_GET['q']:'';?>">
+                    <span id="searchclear" class="glyphicon glyphicon-remove-circle"><onclick="clearInputField()"/></span>
 				</p>
                 
                
@@ -83,7 +84,7 @@
     </div> <!-- /container -->
                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/search-table.js"></script>
-
+    <script src="js/search-clear.js"></script>
     <?php //click on search bar if a query is given
     if (!empty($_GET['q'])) { echo '<script type="text/javascript" src="js/click-search.js"></script>'; } ?>
   </body>

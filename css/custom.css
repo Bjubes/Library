@@ -2,9 +2,17 @@
     background-color: #E6E6E6;
 }
 
-.pull-left {
-  float: left !important;
+#searchclear {
+    position: absolute;
+    right: 8.5em;
+    top: 4.7em;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
 }
-.pull-right {
-  float: right !important;
+
+#search {
+    width:200px;
 }
