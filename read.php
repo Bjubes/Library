@@ -39,54 +39,23 @@
                     <p>There are <?php echo $data['amount'];?> copies on file.</p>
                     <?php } ?>
 	    			<div class="form-horizontal" >
-					  <div class="form-group">
-					    <label class="control-label">Title</label>
-					    <div class="controls">
-						    <label class="checkbox">
-						     	<?php echo $data['title'];?>
-						    </label>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="control-label">Author</label>
-					    <div class="controls">
-					      	<label class="checkbox">
-						     	<?php echo $data['author'];?>
-						    </label>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="control-label">ISBN</label>
-					    <div class="controls">
-					      	<label class="checkbox">
-						     	<?php echo $data['isbn'];?>
-						    </label>
-					    </div>
-					  </div>
+				    <?php
+                    $labels = array("Title", "Author", "ISBN", "Dewey Decimal", "Edition Information", "Summary");
+                    $i = 0;
+                    foreach ($data as $v) { ?>
                         <div class="form-group">
-					    <label class="control-label">Dewey Decimal</label>
-					    <div class="controls">
-						    <label class="checkbox">
-						     	<?php echo $data['dewey_decimal'];?>
-						    </label>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="control-label">Edition Information</label>
-					    <div class="controls">
-					      	<label class="checkbox">
-						     	<?php echo $data['edition_info'];?>
-						    </label>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label class="control-label">Summary</label>
-					    <div class="controls">
-					      	<label class="checkbox">
-						     	<?php echo $data['summary'];?>
-						    </label>
-					    </div>
-					  </div>
+                            <label class="col-sm-2 control-label"><?php echo $labels[$i]; ?></label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static"><?php echo $v ?></p>
+                            </div>
+                        </div>
+                    <?php 
+                        $i += 1;
+                        if ($i == 6){
+                        break;}
+                    }
+                    ?> 
+
 					    <div class="form-actions">
 						  <a class="btn" href="index.php">Back</a>
 					   </div>
