@@ -64,7 +64,7 @@ elseif($createForm) {
                 <?php } elseif($createForm) { ?>
                         
                         <div class="form-actions">
-  						  <a class="btn" href="index.php">Back</a>
+  						  <a class="btn btn-default" href="index.php">Back</a>
 						  <button type="submit" class="btn btn-success">Create</button>
                           <?php //the dash is in the line above so the isbn is treated as a string and not a number, losing its preceeding zeros ?>
 						</div>

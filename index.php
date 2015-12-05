@@ -34,7 +34,7 @@
 			<div class="row">
 				<p class="form-inline">
 					<a href="create.php" class="btn btn-success">Add book using ISBN</a>
-					<a href="create-manual.php" class="btn btn-info">Add book manually</a>
+					<a href="create-manual.php" class="btn btn-default">Add book manually</a>
                     <input class="form-control pull-right" type="text" id="search" placeholder="Type to search" value="<?php echo !empty($_GET['q'])?$_GET['q']:'';?>">
                     <span id="searchclear" class="glyphicon glyphicon-remove-circle"><onclick="clearInputField()"/></span>
 				</p>
@@ -68,7 +68,7 @@
                            		echo '<td> '. $row['dewey_decimal'] . '</td>';
 							   	echo '<td> '. $row['edition_info'] . '</td>';
 							   	echo '<td width=250>';
-							   	echo '<a class="btn" href="read.php?id='.$row['id'].'">Details</a>';
+							   	echo '<a class="btn btn-info" href="read.php?id='.$row['id'].'">Details</a>';
 							   	echo '&nbsp;';
 							   	echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Modify</a>';
 							   	echo '&nbsp;';

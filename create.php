@@ -80,7 +80,7 @@
                         
 					  <div class="form-actions">
 						  <button type="submit" class="btn btn-success">Create</button>
-						  <a class="btn btn-custom" href="index.php">Back</a>
+						  <a class="btn btn-default" href="index.php">Back</a>
 						</div>
 					</form>
 				</div>
