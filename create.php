@@ -25,7 +25,10 @@
 			$isbnError = 'Please enter an ISBN';
 			$valid = false;
 		}
-        
+        if($amt < 1 || is_int($amt)){
+            $amtError = 'Please enter a positive integer';
+            $valid = false;
+        }
 		// insert data
 		if ($valid) {
            require 'json-to-db.php';
@@ -65,12 +68,12 @@
 					    </div>
 					  </div>
                             <i class="icon-plus-sign"></i>
-                         <div class="form-group <?php echo !empty($emailError)?'error':'';?>">
+                         <div class="form-group <?php echo !empty($amtError)?'error':'';?>">
 					    <label class="control-label">Copies</label>
 					    <div class="controls">
 					      	<input class="form-control" name="amt" type="number"  placeholder="1" value="<?php echo !empty($amt)?$amt:'1';?>">
-					      	<?php if (!empty($emailError)): ?>
-					      		<span class="help-inline"><?php echo $emailError;?></span>
+					      	<?php if (!empty($amtError)): ?>
+					      		<span class="help-inline"><?php echo $amtError;?></span>
 					      	<?php endif;?>
 					    </div>
 					  </div>
