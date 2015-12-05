@@ -27,5 +27,6 @@
         $q->execute(array($isbn,$author,$title,$dewey,$info,$summary,$amt));
         Database::disconnect();
         $_SESSION['infoMessage'] = 'added "' . $title . '" to the library.';
+        header("Location: index.php");
     }
 ?>
