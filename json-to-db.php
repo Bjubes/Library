@@ -1,5 +1,5 @@
 <?php
-    define('APIkey','ANRI2C56',true);
+    require_once 'define-apikey.php';
 
     $json_string = file_get_contents('http://isbndb.com/api/v2/json/'. APIkey .'/book/' . $isbn);
 
@@ -11,7 +11,7 @@
     $summary = $array['data'][0]['summary'];
 
 
-    require 'add-to-database.php';
+   
 ?>
 
 

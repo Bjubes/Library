@@ -23,6 +23,7 @@
 
     //refil new one
     require 'json-to-db.php';
+    require 'add-to-database.php';
 
     $_SESSION['infoMessage']= 'Reset ' . $title;
     header("Location: index.php");

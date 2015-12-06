@@ -31,7 +31,8 @@
         }
 		// insert data
 		if ($valid) {
-           require 'json-to-db.php';
+            require 'json-to-db.php';
+            require 'add-to-database.php';
 		}
 	}
 ?>
