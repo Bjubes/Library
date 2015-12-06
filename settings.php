@@ -12,11 +12,12 @@
     		<div class="row">
                
                 <h3>Settings</h3>
-                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Delete all Entries</button>
+                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteAllModal">Delete all Entries</button>
+                <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#resetAllisbn">Reset all books using ISBN</button>
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="deleteAllModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -29,6 +30,24 @@
                 <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">No! Go back!</button>
                 <a href="delete-all-books.php" class="btn btn-danger">Yes, delete all my books</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="resetAllisbn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+                </div>
+                <div class="modal-body">
+                Are you sure you want to reset every book in your library? You cannot undo this action. This will not change any books that have no ISBN.
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No! Go back!</button>
+                <a href="reset-all-books.php" class="btn btn-warning">Yes, reset all my books</a>
                 </div>
             </div>
         </div>
