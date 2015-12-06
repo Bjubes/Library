@@ -1,16 +1,22 @@
 <?php 
     session_start();
 	require 'database.php';
-	$id = 0;
 	
 	if ( !empty($_GET['id'])) {
-		$id = $_REQUEST['id'];
+		$id = $_GET['id'];
 	}
-	
-	if ( !empty($_POST)) {
-		// keep track post values
-		$id = $_POST['id'];
-		
+	else{
+		header("Location: index.php");
+	}
+		//get title of book
+
+        $pdo = Database::connect();
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "SELECT title FROM books where id = ?";
+		$q = $pdo->prepare($sql);
+		$q->execute(array($id));
+		$data = $q->fetch(PDO::FETCH_ASSOC);
+
 		// delete data
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -18,10 +24,14 @@
 		$q = $pdo->prepare($sql);
 		$q->execute(array($id));
 		Database::disconnect();
-        $_SESSION['errorMessage'] = 'Book removed sucessfully.';
+        $_SESSION['errorMessage'] = 'removed "' . $data['title'] . '" sucessfully.';
 		header("Location: index.php");
 		
-	} 
+	 
+
+
+
+
 ?>
 
 <!DOCTYPE html>
