@@ -16,7 +16,8 @@
 		$q = $pdo->prepare($sql);
 		$q->execute(array($id));
 		$data = $q->fetch(PDO::FETCH_ASSOC);
-
+    
+if (isset($_POST['id'])) {
 		// delete data
 		$pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -24,10 +25,10 @@
 		$q = $pdo->prepare($sql);
 		$q->execute(array($id));
 		Database::disconnect();
-        $_SESSION['errorMessage'] = 'removed "' . $data['title'] . '" sucessfully.';
+        $_SESSION['errorMessage'] = 'removed "' . $_POST['title'] . '" sucessfully.';
 		header("Location: index.php");
 		
-	 
+    }
 
 
 
@@ -52,7 +53,8 @@
 		    		
 	    			<form class="form-horizontal" action="delete.php" method="post">
 	    			  <input class="form-control" type="hidden" name="id" value="<?php echo $id;?>"/>
-					  <p class="alert alert-error">Are you sure to delete ?</p>
+	    			  <input class="form-control" type="hidden" name="title" value="<?php echo $data['title']; ?>"/>
+					  <p class="alert alert-error">Are you sure you want to delete "<?php echo $data['title']; ?>"?</p>
 					  <div class="form-actions">
 						  <button type="submit" class="btn btn-danger">Yes</button>
 						  <a class="btn btn-default" href="index.php">No</a>

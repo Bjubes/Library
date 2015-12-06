@@ -25,7 +25,7 @@
 			$isbnError = 'Please enter an ISBN';
 			$valid = false;
 		}
-        if($amt < 1 || is_int($amt)){
+        if($amt < 1 || !is_int($amt)){
             $amtError = 'Please enter a positive integer';
             $valid = false;
         }
