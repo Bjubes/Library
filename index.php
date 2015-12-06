@@ -14,7 +14,8 @@
     <div class="container">
     		<div class="row">
                
-                <h3>Library</h3>
+                <h3>Library                     <a href="settings.php"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+</h3>
                 
                  <?php //error and info messages
                     if (!empty($_SESSION['errorMessage'])) {

@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="index.php"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
+        <h3 class="pull-right"><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></h3>
     		<div class="row">
                
                 <h3>Settings</h3>
