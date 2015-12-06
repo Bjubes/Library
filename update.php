@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 	require 'database.php';
-
+    $data = array('','','','','','');
 	$id = null;
 	if ( !empty($_GET['id'])) {
 		$id = $_REQUEST['id'];
@@ -25,8 +25,8 @@
 		$summary = $_POST['summary'];
         $info = $_POST['info'];
 		$amt = intval($_POST['amt']);
-		
-		// validate input
+
+        // validate input
 		$valid = true;
 		if (empty($author)) {
 			$nameError = 'Please enter an author';
@@ -43,6 +43,8 @@
 			$isbnError = 'ISBN is invalid';
 			$valid = false;
 		}
+        var_dump($valid, $isbnError, $titleError, $nameError);
+        var_dump($_POST);
 		// update data
 		if ($valid) {
 			$pdo = Database::connect();
@@ -63,13 +65,14 @@
 		$q->execute(array($id));
 		$data = $q->fetch(PDO::FETCH_ASSOC);
         //old detials to modify
+        $amt = $data['amount'];
         $title = $data['title'];
 		$author = $data['author'];
 		$isbn = $data['isbn'];
         $dewey = $data['dewey_decimal'];
         $info = $data['edition_info'];
 		$summary = $data['summary'];
-		$amt = $data['amount'];
+
 		
 		
 		Database::disconnect();

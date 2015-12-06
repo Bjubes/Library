@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 	require 'database.php';
-
+    $data = array("","","","","","");
 	
 	if ( !empty($_POST)) {
 		// keep track validation errors
